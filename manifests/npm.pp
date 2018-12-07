@@ -19,7 +19,8 @@ define nodejs::npm (
   # Note that install_check will always return false when a remote source is
   # provided
   if $source != 'registry' {
-    $install_check_package_string = $source
+    #$install_check_package_string = $source
+    $install_check_package_string = "${package}:${package}@${ensure}"
     $package_string = $source
   } elsif $ensure =~ /^(present|absent)$/ {
     $install_check_package_string = $package
